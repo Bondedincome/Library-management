@@ -1,0 +1,35 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2025-02-15 23:46:48.516081",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2025-02-15 23:48:30.382105",
+ "modified_by": "Administrator",
+ "module": "Library App",
+ "name": "Overdue Books",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT \r\n    loan.name AS \"Loan ID\",\r\n    book.title AS \"Book Title\",\r\n    member.full_name AS \"Borrower\",\r\n    loan.loan_date AS \"Loan Date\",\r\n    loan.return_date AS \"Due Date\",\r\n    DATEDIFF(NOW(), loan.return_date) AS \"Days Overdue\"\r\nFROM \r\n    `tabLoan` AS loan\r\nJOIN \r\n    `tabBook` AS book ON loan.book = book.name\r\nJOIN \r\n    `tabMember` AS member ON loan.member = member.name\r\nWHERE \r\n    loan.return_date < NOW() AND book.status = \"Loaned\"\r\nORDER BY \r\n    loan.return_date ASC;\r\n",
+ "ref_doctype": "Loan",
+ "reference_report": "",
+ "report_name": "Overdue Books",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Librarian"
+  },
+  {
+   "role": "Library Member"
+  }
+ ],
+ "timeout": 0
+}

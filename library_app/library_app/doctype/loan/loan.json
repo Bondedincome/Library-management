@@ -1,0 +1,127 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "LOAN-.####",
+ "creation": "2025-02-13 00:53:36.186585",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_ugzl",
+  "member",
+  "book",
+  "column_break_sgbb",
+  "loan_date",
+  "return_date",
+  "amended_from",
+  "route"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ugzl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "loan_date",
+   "fieldtype": "Date",
+   "label": "Loan Date"
+  },
+  {
+   "fieldname": "return_date",
+   "fieldtype": "Date",
+   "label": "Return Date"
+  },
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "label": "Member",
+   "options": "Member"
+  },
+  {
+   "fieldname": "book",
+   "fieldtype": "Link",
+   "label": "Book",
+   "mandatory_depends_on": "frappe.ui.form.on(\"Loan\", {\r\n    refresh: function(frm) {\r\n        frm.set_query(\"book\", function() {\r\n            return {\r\n                filters: {\r\n                    \"status\": \"Available\"\r\n                }\r\n            };\r\n        });\r\n    }\r\n});\r\n",
+   "options": "Book"
+  },
+  {
+   "fieldname": "column_break_sgbb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Loan",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Route"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Member",
+   "link_fieldname": "first_name"
+  },
+  {
+   "link_doctype": "Book",
+   "link_fieldname": "title"
+  }
+ ],
+ "modified": "2025-02-19 22:17:30.548429",
+ "modified_by": "Administrator",
+ "module": "Library App",
+ "name": "Loan",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Library Member",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "loan",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "member",
+ "track_changes": 1
+}

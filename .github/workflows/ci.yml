@@ -78,7 +78,7 @@ jobs:
       - name: Install MariaDB Client
         run: |
           sudo apt update
-          sudo apt-get install mariadb-client
+          sudo apt-get install mariadb-client -y
 
       - name: Setup
         run: |
